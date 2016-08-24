@@ -11,6 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20160823235453) do
+
+  create_table "contacts", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "mobile"
+    t.string   "email"
+    t.string   "image_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "contacts_organizations", id: false, force: :cascade do |t|
+    t.integer "contact_id"
+    t.integer "organization_id"
+  end
+
+  add_index "contacts_organizations", ["contact_id"], name: "index_contacts_organizations_on_contact_id"
+  add_index "contacts_organizations", ["organization_id"], name: "index_contacts_organizations_on_organization_id"
+
+  create_table "organizations", force: :cascade do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

@@ -1,0 +1,22 @@
+<!-- content -->
+<div class="row">
+  <div class="col s12 m3 cyan lighten-4">
+  <%= erb :_sidebar%>
+  </div>
+  <div class="col s12 m9 blue-grey lighten-5">
+    <h5>Contacts</h5>
+    <!-- cards -->
+    <div class='contact_cards'>  
+      <% Contact.all.each do |contact| %>
+      <%= erb :_contact_card, locals: {contact: contact}%>
+      <% end %>
+    </div>
+  </div> 
+</div> <!-- end of content -->
+
+<!-- hidden resources -->
+  <!-- dummy contact card -->
+  <div class = 'dummy'>
+    <% new_contact = Contact.new %>  
+    <%= erb :_contact_card, locals: {contact: new_contact}%>
+  </div>
